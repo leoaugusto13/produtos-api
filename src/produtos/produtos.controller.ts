@@ -21,18 +21,18 @@ export class ProdutosController {
     }
 
     @Post()
-    criarProduto(@Body() produto) : string {
-        console.log(produto);
-        return 'Produto criado com sucesso';
+    criarProduto(@Body() produto: Produto){
+        produto.id = 100;
+        this.produtos.push(produto);
     }
 
     @Put()
-    alterarProduto(@Body() produto) : string {
-        return 'Produto alterado com sucesso';
+    alterarProduto(@Body() produto: Produto) {
+      return this.produtos;
     }
 
     @Delete(':id')
-    deletarProduto(@Param() params) : string {
-        return `Deletado o produto ${params.id}`;
+    deletarProduto(@Param() params){
+        this.produtos.pop()
     }
 }
